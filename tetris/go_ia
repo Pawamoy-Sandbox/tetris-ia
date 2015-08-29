@@ -1,0 +1,19 @@
+#!/bin/bash
+usage() {
+	echo "usage: ${0##*/} tetris | demo LIST [PIECES]"
+	exit 1
+}
+
+[ -z "$1" ] && usage
+if [ "$1" = "demo" ]; then
+	[ -z "$2" ] && usage
+	[ ! -f "$2" ] && usage
+	[[ -n "$3" && ! -f "$3" ]] && usage
+fi
+
+sleep 0.5
+rmiregistry &
+java IA $*
+pkill rmiregistry
+pkill java
+

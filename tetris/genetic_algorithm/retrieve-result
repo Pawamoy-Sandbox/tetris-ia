@@ -1,0 +1,7 @@
+retrieve_result() {
+	# lines
+	echo $(/bin/cat "$exec_result" | /bin/grep "total_lines" | /usr/bin/cut -d':' -f2)
+	# score
+	#~ echo $(/bin/cat "$exec_result" | /bin/grep "score" | /usr/bin/cut -d':' -f2)
+}
+

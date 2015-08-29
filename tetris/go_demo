@@ -1,0 +1,21 @@
+#!/bin/bash
+usage() {
+	echo -e "usage: ${0##*/} LIST [PIECES]\nwhere LIST and PIECES are filenames"
+	exit 1
+
+}
+[ -z "$1" ] && usage
+[ ! -f "$1" ] && { echo "$1 doesn't exist"; exit 2; }
+[[ -n "$2" && ! -f "$2" ]] && { echo "$2 doesn't exist"; exit 2; }
+echo "Killing processes..."
+pkill rmiregistry
+pkill java
+sleep 1
+echo "Launch RMIRegistry in background"
+rmiregistry &
+echo "Start java demo"
+if [ -n "$2" ]; then
+	java demo "$1" "$2"
+else
+	java demo "$1"
+fi

@@ -1,0 +1,6 @@
+param[0]=lines
+param[1]=height
+param[2]=holes
+param[3]=blockages
+param[4]=bumpiness
+param[5]=wells

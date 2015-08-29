@@ -1,0 +1,5 @@
+pre_exec() {
+	# usage: pre_exec set_path
+	/bin/mv "$exec_result" ./logs/log${1##*t} 2>/dev/null
+	/bin/cp "$1" "$exec_dir/ia/weights"
+}

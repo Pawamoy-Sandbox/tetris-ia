@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "Killing processes..."
+pkill rmiregistry
+pkill java
+sleep 1
+echo "Launch RMIRegistry in background"
+rmiregistry &
+echo "Start java tetris"
+java tetris
+#~ result=$(java tetris)
+#~ score=${result% *}
+#~ lines=${result#* }
+#~ echo "Lignes complétées : $lines"
+#~ echo "Score             : $score"

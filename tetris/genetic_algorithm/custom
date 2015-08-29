@@ -1,0 +1,22 @@
+#!/bin/bash
+
+my_dir="/media/pawantu/Data/Universite/Semestre_5/Programmation_Orientee_Objet_2/ProjetTetrisPoo2/tetris"
+
+./genetic_algorithm.sh $* \
+	-d "$my_dir" \
+	-e "./go_ia tetris" \
+	-r "$my_dir/tetris.log" \
+	--ignore-exec-error \
+	--init-set 10 \
+	--survive 4 \
+	--fittest 'h' \
+	--cycle 0 \
+	--pre-f "./pre-exec" \
+	--result-f "./retrieve-result" \
+	--type 'float' \
+	--scale 4 \
+	--skip-init \
+	--parameters "./parameters" \
+	--minmutate -1 \
+	--maxmutate 1 \
+	--mutate-from "$my_dir/ia/pretty_good_weights"

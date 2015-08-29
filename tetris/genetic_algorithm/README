@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# DO NOT RUN THIS SCRIPT
+# use it as an example
+# creates your own 'custom' script like this one (without all the comments), and keep it out of the repo
+# you have to edit "my_dir" variable to run your tests
+# you can type ./genetic_algorithm.sh --help to show detailed usage
+
+my_dir="your_tetris_directory" # where your executable is
+
+# interesting values to edit are
+#	--init-set
+#	--survive
+#	--cycle
+#	--minmutate
+#	--maxmutate
+#	the 'retrieve-result' function: try it with 'score' instead of 'lines' !!
+
+# the following options should not be changed or deleted
+#	--ignore-exec-error
+#	--fittest
+
+# the following options MUST not be changed or deleted
+#	-d -e -r
+#	--pre-f --result-f --parameters (for these ones, edit files instead of argument)
+#	--type float (well, you can try with 'int'...)
+
+# but don't worry, if you mess it up, the genetic script will warn you of your mistakes :)
+
+./genetic_algorithm.sh $* \
+	-d "$my_dir" \
+	-e "./go_ia tetris" \
+	-r "$my_dir/tetris.log" \
+	--ignore-exec-error \
+	--init-set 3 \
+	--survive 2 \
+	--fittest 'h' \
+	--cycle 10 \
+	--pre-f "./pre-exec" \
+	--result-f "./retrieve-result" \
+	--type 'float' \
+	--scale 4 \
+	--skip-init \
+	--parameters "./parameters" \
+	--minmutate -1 \
+	--maxmutate 1 \
+	--mutate-from "$my_dir/ia/pretty_good_weights"
